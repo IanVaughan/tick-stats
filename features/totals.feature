@@ -3,4 +3,5 @@ Feature: Get totals
 
   Scenario: Shows main page
     Given I have opened "http://localhost:4567"
-    Then I should see a JSON String with "{IanVaughan: 10}"
+    Then The response header should be "application/json"
+    And It should contain "{:IanVaughan => 10}"

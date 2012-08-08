@@ -1,5 +1,3 @@
-
-# require 'rack'
 require './lib/tickstats/server'
 require 'sinatra'
 require 'rack/test'
@@ -15,5 +13,4 @@ end
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
-  # Server.run!
 end
