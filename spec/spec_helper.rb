@@ -1,4 +1,5 @@
 require './lib/tickstats/server'
+require './lib/tickstats/email_parser'
 require 'sinatra'
 require 'rack/test'
 
