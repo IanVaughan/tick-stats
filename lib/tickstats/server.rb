@@ -1,5 +1,6 @@
 require "sinatra/base"
 require 'json'
+require './lib/tickstats/stats'
 
 module TickStats
   class Server < Sinatra::Base
@@ -9,7 +10,20 @@ module TickStats
     end
 
     get '/' do
+      "Not a lot to see here, move along now..."
+    end
+
+    get '/test' do
       { :IanVaughan => 10 }.to_json
+    end
+
+    get '/totals' do
+      s = Stats.new
+      s.load.to_json
+    end
+
+    get '/date/' do
+
     end
 
   end

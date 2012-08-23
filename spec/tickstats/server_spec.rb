@@ -4,7 +4,7 @@ module TickStats
   describe Server do
 
     it "should load" do
-      get '/'
+      get '/test'
 
       last_response.should be_ok
       header_content(last_response).should == 'application/json'
