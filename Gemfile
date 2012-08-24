@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rake'
 gem 'sinatra'
-gem 'ruby-gmail'
+gem 'gmail'
 
 group :test do
   gem 'rspec'
