@@ -9,7 +9,7 @@ module TickStats
       last_response.should be_ok
       header_content(last_response).should == 'application/json'
 
-      last_response.body.should == {:IanVaughan => 10}.to_json
+      last_response.body.should == {:abc => 10}.to_json
     end
   end
 

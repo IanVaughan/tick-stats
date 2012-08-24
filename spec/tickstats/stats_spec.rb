@@ -4,8 +4,10 @@ module TickStats
   describe Stats do
 
     let(:data) {
-      [{"Tuesday, 07 Aug '12" => {'First Name' => 0, 'Second Name' => 1.2}},
-       {"Tuesday, 07 Aug '12" => {'First Name' => 1, 'Second Name' => 1.8}}]
+      {
+        "07 Aug 12" => {'First Name' => 0, 'Second Name' => 1.2},
+        "08 Aug 12" => {'First Name' => 1, 'Second Name' => 1.8}
+      }
     }
 
     # let(:stats) { Stats.new }

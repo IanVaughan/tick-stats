@@ -1,12 +1,14 @@
 require 'yaml'
-# require './lib/tickstats/email_access'
+require './lib/tickstats/email_access'
 require './lib/tickstats/email_parser'
 
 module TickStats
   class Stats
 
     def initialize
-
+      config = YAML.load( File.read('config/gmail.yml') )
+      @email_access = TickStats::EmailAccess.new config
+      @results_file = 'totals.yml'
     end
 
     def totals
@@ -14,22 +16,21 @@ module TickStats
     end
 
     def load
-      YAML.load(File.open('totals.yml'))
+      update unless File.exists? @results_file
+      YAML.load(File.open(@results_file))
     end
 
     def update
-      config = YAML.load( File.read('config/gmail.yml') )
-      t = TickStats::EmailAccess.new config
-      d = t.update
+      data = @email_access.fetch
 
-      result = []
-      d.each do |e|
-        result << EmailParser.parse(e)
+      result = {}
+      data.each do |e|
+        result.merge! EmailParser.parse(e)
       end
 
-      puts result
+      # result = result.sort
 
-      File.open('totals.yml','w') do |file|
+      File.open(@results_file, 'w') do |file|
         file.puts result.to_yaml
       end
 

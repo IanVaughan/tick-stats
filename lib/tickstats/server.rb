@@ -14,7 +14,7 @@ module TickStats
     end
 
     get '/test' do
-      { :IanVaughan => 10 }.to_json
+      { :abc => 10 }.to_json
     end
 
     get '/totals' do

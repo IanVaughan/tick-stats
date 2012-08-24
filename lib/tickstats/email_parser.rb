@@ -1,3 +1,5 @@
+require 'date'
+
 module TickStats
   class EmailParser
 
@@ -6,7 +8,7 @@ module TickStats
       date = ''
       names = {}
       text.each_line do |line|
-        date = find_date(line) if line =~ /^The following people/
+        date = parse_date(find_date(line)) if line =~ /^The following people/
         names.merge!(extract_name_hour(line)) if line =~ /^  /
       end
       {date => names}
@@ -16,6 +18,10 @@ module TickStats
       test_string = 'Tickspot for '
       index = text.index(test_string) + test_string.length
       text.chomp[index..-2]
+    end
+
+    def self.parse_date date
+      Date.parse(date).strftime("%Y-%m-%d")
     end
 
     def self.extract_name_hour line
