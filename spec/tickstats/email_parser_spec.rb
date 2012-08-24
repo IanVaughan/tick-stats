@@ -16,6 +16,11 @@ Please berate them at every possible opportunity."}
       EmailParser.find_date(text).should == "Tuesday, 07 Aug '12"
     end
 
+    it "should convert the date" do
+      date = "Tuesday, 07 Aug '12"
+      EmailParser.parse_date(date).should == "2012-08-07"
+    end
+
     it "should extract name and whole number into a hash" do
       text = "  First Name: 1"
       EmailParser.extract_name_hour(text).should == {"First Name" => 1}
@@ -27,8 +32,9 @@ Please berate them at every possible opportunity."}
     end
 
     it "should parse emails and extract names and hours into a hash" do
-      EmailParser.parse(text).should == {"Tuesday, 07 Aug '12" => {'First Name' => 0, 'Second Name' => 1.2}}
+      EmailParser.parse(text).should == {"2012-08-07" => {'First Name' => 0, 'Second Name' => 1.2}}
     end
+
 
   end
 end
