@@ -11,7 +11,7 @@ module TickStats
         date = parse_date(find_date(line)) if line =~ /^The following people/
         names.merge!(extract_name_hour(line)) if line =~ /^  /
       end
-      {date => names}
+      { date => names }
     end
 
     def self.find_date text
@@ -26,9 +26,7 @@ module TickStats
 
     def self.extract_name_hour line
       split = line.split(':')
-      {
-        split.first.lstrip => split.last.lstrip.to_f
-      }
+      { split.first.lstrip => split.last.lstrip.to_f }
     end
 
   end

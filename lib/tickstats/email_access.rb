@@ -9,7 +9,7 @@ module TickStats
 
     def fetch
       data = []
-      with_gmail do |account|
+      with_email do |account|
         data = read account
       end
       data
@@ -17,9 +17,9 @@ module TickStats
 
     private
 
-    def with_gmail
-      Gmail.new(@config[:user], @config[:pass]) do |gmail|
-        yield gmail
+    def with_email
+      Gmail.new(@config[:user], @config[:pass]) do |account|
+        yield account
       end
     end
 

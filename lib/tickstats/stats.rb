@@ -6,7 +6,7 @@ module TickStats
   class Stats
 
     def initialize
-      config = YAML.load( File.read('config/gmail.yml') )
+      config = YAML.load(File.read('config/gmail.yml'))
       @email_access = TickStats::EmailAccess.new config
       @results_file = 'totals.yml'
     end
