@@ -5,8 +5,8 @@ module TickStats
 
     let(:data) {
       {
-        "07 Aug 12" => {'First Name' => 0, 'Second Name' => 1.2},
-        "08 Aug 12" => {'First Name' => 1, 'Second Name' => 1.8}
+        DateTime.new(2012, 8, 8) => {'First Person' => 0, 'Second Person' => 1.2},
+        DateTime.new(2012, 8, 8) => {'First Person' => 1, 'Second Person' => 1.8}
       }
     }
 
