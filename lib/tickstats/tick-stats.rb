@@ -9,19 +9,12 @@ class TickStats
 
   def initialize
     conf = AppConf.new
-    conf.load 'settings.yml'
+    conf.load 'gmail.yml'
 
-    @gmail = Gmail.new(conf.name, ENV["TICK_PASS"] || prompt)
+    @gmail = Gmail.new(conf.name, ENV["TICK_PASS"])
     @totals = {}
 
     @logger = Logger.new('tick.log')
-
-    dbconfig = YAML::load(File.open('database.yml'))
-    @db = Sequel.connect(dbconfig['local_db'])
-  end
-
-  def prompt
-    ""
   end
 
   def run
@@ -31,7 +24,6 @@ class TickStats
     # @gmail.label("Bin").emails do |email|
     # @gmail.mailbox("").emails do |emails|
     labels do |email|
-      @logger.debug email
       parse email.message.body.to_s if email.subject =~ /#{EMAIL_SUBJECT}/
     end
 
@@ -44,7 +36,6 @@ class TickStats
     @gmail.labels.all.each do |l|
       begin
         count = @gmail.mailbox(l).count
-        @logger.debug "#{l} : #{count}"
 
         @gmail.mailbox(l).emails(:from => "tickspot@globaldev.co.uk").each do |email|
           @logger.debug email.subject
