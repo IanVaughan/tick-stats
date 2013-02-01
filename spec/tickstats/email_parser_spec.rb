@@ -2,7 +2,9 @@ require 'spec_helper'
 
 module TickStats
   describe EmailParser do
-    let(:text) {"Hello,
+    let(:text) do {
+      subject: "Tickspot Email of Shame for Tuesday, 07 Aug '12",
+      body: "Hello,
 
 The following people should be ashamed of themselves for not completing their time on Tickspot for Tuesday, 07 Aug '12:
 
@@ -12,8 +14,7 @@ The following people should be ashamed of themselves for not completing their ti
 Please berate them at every possible opportunity."}
 
     it "finds the date part" do
-      text = "The following people should be ashamed of themselves for not completing their time on Tickspot for Tuesday, 07 Aug '12:"
-      EmailParser.find_date(text).should == "Tuesday, 07 Aug '12"
+      EmailParser.find_date(text[:subject]).should == "Tuesday, 07 Aug '12"
     end
 
     it "converts the date" do

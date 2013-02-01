@@ -4,19 +4,18 @@ module TickStats
     class << self
       def parse text
         return '' unless text
-        date = ''
+        date = parse_date(find_date(text[:subject]))
         names = {}
-        text.each_line do |line|
-          date = parse_date(find_date(line)) if line =~ /^The following people/
+        text[:body].each_line do |line|
           names.merge!(extract_name_hour(line)) if line =~ /^  /
         end
         { date => names }
       end
 
       def find_date text
-        test_string = 'Tickspot for '
+        test_string = 'Tickspot Email of Shame for '
         index = text.index(test_string) + test_string.length
-        text.chomp[index..-2]
+        text.chomp[index..-1]
       end
 
       def parse_date date

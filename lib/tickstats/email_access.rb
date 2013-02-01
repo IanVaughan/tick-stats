@@ -33,7 +33,7 @@ module TickStats
       data = []
       account.mailbox(@config[:label]).emails.each do |email|
         @logger.debug "EmailAccess::read->email:#{email.inspect}"
-        data << email.message.body.to_s
+        data << {subject: email.message.subject.to_s, body: email.message.body.to_s}
       end
       @logger.debug "EmailAccess::read->data:#{data.inspect}"
       data
