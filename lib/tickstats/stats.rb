@@ -5,19 +5,20 @@ require './lib/tickstats/email_parser'
 module TickStats
   class Stats
 
+    RESULTS_FILE = 'totals.yml'
+
     def initialize config_file = 'config/gmail.yml'
       config = YAML.load(File.read(config_file))
       @email_access = TickStats::EmailAccess.new config
-      @results_file = 'totals.yml'
     end
 
     def totals
       load
     end
 
-    def load
-      update unless File.exists? @results_file
-      YAML.load(File.open(@results_file))
+    def load reload = false
+      update unless reload || File.exists?(RESULTS_FILE)
+      YAML.load(File.open(RESULTS_FILE))
     end
 
     def update
