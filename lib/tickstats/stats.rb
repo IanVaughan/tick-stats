@@ -5,8 +5,8 @@ require './lib/tickstats/email_parser'
 module TickStats
   class Stats
 
-    def initialize
-      config = YAML.load(File.read('config/gmail.yml'))
+    def initialize config_file = 'config/gmail.yml'
+      config = YAML.load(File.read(config_file))
       @email_access = TickStats::EmailAccess.new config
       @results_file = 'totals.yml'
     end
