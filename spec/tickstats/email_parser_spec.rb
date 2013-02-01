@@ -18,7 +18,7 @@ Please berate them at every possible opportunity."}
 
     it "should convert the date" do
       date = "Tuesday, 07 Aug '12"
-      EmailParser.parse_date(date).should == "2012-08-07"
+      EmailParser.parse_date(date).should == DateTime.new(2012, 8, 7)
     end
 
     it "should extract name and whole number into a hash" do
@@ -32,9 +32,8 @@ Please berate them at every possible opportunity."}
     end
 
     it "should parse emails and extract names and hours into a hash" do
-      EmailParser.parse(text).should == {"2012-08-07" => {'First Person' => 0, 'Second Person' => 1.2}}
+      EmailParser.parse(text).should == {DateTime.new(2012, 8, 7) => {'First Person' => 0, 'Second Person' => 1.2}}
     end
-
 
   end
 end

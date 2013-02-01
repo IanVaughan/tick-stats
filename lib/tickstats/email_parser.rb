@@ -23,7 +23,7 @@ module TickStats
       end
 
       def parse_date date
-        Date.parse(date).strftime("%Y-%m-%d")
+        DateTime.parse(date)
       end
 
       def extract_name_hour line
