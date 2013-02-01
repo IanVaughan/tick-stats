@@ -39,5 +39,28 @@ Please berate them at every possible opportunity."}
       end
     end
 
+    context "with everyone filling in their tick" do
+      let(:text) do {
+        subject: "Tickspot Email of Shame for Tuesday, 07 Aug '12",
+        body: "Hello,
+
+You'll be pleased to hear that yesterday *everyone* completed their time on Tickspot!
+
+Long may the trend continue!" }
+      end
+
+      it "finds the date part" do
+        EmailParser.find_date(text[:subject]).should == "Tuesday, 07 Aug '12"
+      end
+
+      it "finds the persons name and whole number into a hash" do
+        EmailParser.extract_name_hour("").should == nil # ? {}
+      end
+
+      it "parses emails and extract names and hours into a hash" do
+        EmailParser.parse(text).should == {DateTime.new(2012, 8, 7) => {}} # nil ?
+      end
+    end
+
   end
 end

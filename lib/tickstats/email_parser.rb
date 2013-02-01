@@ -23,6 +23,7 @@ module TickStats
       end
 
       def extract_name_hour line
+        return nil if line == ''
         split = line.split(':')
         { split.first.lstrip => split.last.lstrip.to_f }
       end
