@@ -7,21 +7,25 @@ module TickStats
 
     RESULTS_FILE = 'totals.yml'
 
-    def initialize config_file = 'config/gmail.yml'
+    def initialize logger = nil, config_file = 'config/gmail.yml'
+      @logger = logger
       config = YAML.load(File.read(config_file))
-      @email_access = TickStats::EmailAccess.new config
+      @email_access = TickStats::EmailAccess.new(config, @logger)
     end
 
     def totals
+      @logger.debug "Stats::totals" if @logger
       load
     end
 
     def load reload = false
+      @logger.debug "Stats::load->reload:#{reload}"
       update unless reload || File.exists?(RESULTS_FILE)
       YAML.load(File.open(RESULTS_FILE))
     end
 
     def update
+      @logger.debug "Stats::load->update"
       data = @email_access.fetch
 
       result = {}
@@ -32,7 +36,6 @@ module TickStats
       File.open(@results_file, 'w') do |file|
         file.puts result.to_yaml
       end
-
     end
 
   end
