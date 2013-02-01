@@ -22,12 +22,12 @@ Please berate them at every possible opportunity."}
     end
 
     it "should extract name and whole number into a hash" do
-      text = "  First Name: 1"
+      text = "  First Person: 1"
       EmailParser.extract_name_hour(text).should == {"First Person" => 1}
     end
 
     it "should extract name and floating point number into a hash" do
-      text = "  First Name: 1.2"
+      text = "  First Person: 1.2"
       EmailParser.extract_name_hour(text).should == {"First Person" => 1.2}
     end
 
