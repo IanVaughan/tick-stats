@@ -2,7 +2,6 @@ require 'gmail'
 require 'app_conf'
 require 'logger'
 require 'yaml'
-require 'sequel'
 
 class TickStats
   EMAIL_SUBJECT = 'Tickspot Email of Shame'
