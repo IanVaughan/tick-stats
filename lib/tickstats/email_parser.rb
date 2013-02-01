@@ -15,7 +15,6 @@ module TickStats
 
       def find_date text
         test_string = 'Tickspot for '
-        # return if text.nil? || text.index(test_string) == 0
         index = text.index(test_string) + test_string.length
         text.chomp[index..-2]
       end
