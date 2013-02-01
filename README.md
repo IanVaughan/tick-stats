@@ -21,6 +21,10 @@ Setup
 
     bundle install
 
+Set env
+
+    export TICK_PASS="password"
+
 Run
 
     rackup
