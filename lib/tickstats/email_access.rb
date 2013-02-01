@@ -5,6 +5,7 @@ module TickStats
 
     def initialize config
       @config = config
+      @config[:pass] = ENV['TICK_PASS']
     end
 
     def fetch
