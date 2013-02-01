@@ -29,8 +29,6 @@ module TickStats
         result.merge! EmailParser.parse(e)
       end
 
-      # result = result.sort
-
       File.open(@results_file, 'w') do |file|
         file.puts result.to_yaml
       end
