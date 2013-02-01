@@ -6,15 +6,10 @@ module TickStats
   class Server < Sinatra::Base
 
     before do
-      content_type 'application/json'
+      content_type :json
     end
 
     get '/' do
-      "Not a lot to see here, move along now..."
-    end
-
-    get '/test' do
-      { :abc => 10 }.to_json
     end
 
     get '/totals' do
@@ -22,8 +17,13 @@ module TickStats
       s.load.to_json
     end
 
-    get '/date/' do
-
+    get '/info' do
+      <<-ENDRESPONSE
+        Ruby:    #{RUBY_VERSION}
+        Rack:    #{Rack::VERSION}
+        Sinatra: #{Sinatra::VERSION}
+        #{session.inspect}
+      ENDRESPONSE
     end
 
   end
