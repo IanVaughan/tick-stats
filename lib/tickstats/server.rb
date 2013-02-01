@@ -20,8 +20,19 @@ module TickStats
     end
 
     get '/totals' do
-      s = Stats.new
-      s.load.to_json
+      logger.debug "/totals"
+      stats.totals.to_json
+    end
+    get '/daily' do
+      stats.daily.to_json
+    end
+
+    get '/sum' do
+      stats.sum.to_json
+    end
+
+    get '/update' do
+      stats.update
     end
 
     get '/info' do
