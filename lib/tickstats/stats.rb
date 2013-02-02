@@ -6,7 +6,6 @@ module TickStats
   class Stats
 
     HOURS = 7.5
-    RESULTS_FILE = 'totals.yml'
 
     def initialize logger = nil, config_file = 'config/gmail.yml'
       @logger = logger
