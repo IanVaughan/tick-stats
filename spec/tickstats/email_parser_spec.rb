@@ -1,8 +1,9 @@
 require 'spec_helper'
+require './lib/tickstats/email_parser'
 
 module TickStats
   describe EmailParser do
-    context "with naughty people" do
+    context "with people not filling out tick" do
       let(:text) do {
         subject: "Tickspot Email of Shame for Tuesday, 07 Aug '12",
         body: "Hello,
