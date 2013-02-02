@@ -12,7 +12,7 @@ module TickStats
 
     before do
       @stats = Stats.new
-      @stats.stub(:load).and_return(data)
+      @stats.stub(:data).and_return(data)
     end
 
     it "should return all the current data" do

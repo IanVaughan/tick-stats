@@ -8,13 +8,11 @@ module TickStats
     end
 
     def totals
-      @logger.debug "Stats::totals" if @logger
-      load
+      data
     end
 
     def sum
       sums = Hash.new { |hash, key| hash[key] = 0 }
-      data = load
       data.each do |date, data|
         data.each do |name, hours|
           sums[name] += HOURS - hours
@@ -25,7 +23,6 @@ module TickStats
 
     def daily
       sums = {}
-      data = load
       data.each do |date, data|
         daily = 0
         data.each do |name, hours|
@@ -36,10 +33,10 @@ module TickStats
       sums
     end
 
-    def load reload = false
-      update unless reload || File.exists?(RESULTS_FILE)
-      YAML.load(File.open(RESULTS_FILE))
-    end
+    private
 
+    def data
+      @data ||= YAML.load(File.open(TickStats::RESULTS_FILE)) if File.exists?(TickStats::RESULTS_FILE)
+    end
   end
 end
