@@ -1,3 +1,7 @@
+#!/usr/bin/env ruby
+#require File.dirname(__FILE__) + '/../config/boot'
+#require 'commands/server'
+
 require './lib/tick_stats'
 run TickStats::Server
 # $:.unshift File.join(File.expand_path(File.dirname(__FILE__)), 'config')
