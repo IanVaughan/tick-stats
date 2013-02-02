@@ -1,7 +1,4 @@
 require "sinatra/base"
-require 'json'
-require './lib/tickstats/stats'
-require 'logger'
 
 module TickStats
   class Server < Sinatra::Base
