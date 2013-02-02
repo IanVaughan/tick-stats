@@ -28,10 +28,6 @@ module TickStats
       stats.sum.to_json
     end
 
-    get '/update' do
-      stats.update
-    end
-
     get '/info' do
       <<-ENDRESPONSE
         Ruby:    #{RUBY_VERSION}
