@@ -17,9 +17,9 @@ module TickStats
     end
 
     get '/totals' do
-      logger.debug "/totals"
       stats.totals.to_json
     end
+
     get '/daily' do
       stats.daily.to_json
     end
