@@ -14,7 +14,7 @@ module TickStats
     end
 
     def logger
-      @logger ||= Logger.new("./log/tick_stats.log")
+      @logger ||= Logger.new(STDOUT)
     end
   end
 end
