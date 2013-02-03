@@ -3,10 +3,6 @@ require "sinatra/base"
 module TickStats
   class Server < Sinatra::Base
 
-    configure :development do
-      $logger = Logger.new(STDOUT)
-    end
-
     stats = Stats.new($logger)
 
     before do
