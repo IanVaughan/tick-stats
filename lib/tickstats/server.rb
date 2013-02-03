@@ -3,8 +3,6 @@ require "sinatra/base"
 module TickStats
   class Server < Sinatra::Base
 
-    stats = Stats.new($logger)
-
     before do
       content_type :json
     end
@@ -13,15 +11,15 @@ module TickStats
     end
 
     get '/totals' do
-      stats.totals.to_json
+      TickStats::stats.totals.to_json
     end
 
     get '/daily' do
-      stats.daily.to_json
+      TickStats::stats.daily.to_json
     end
 
     get '/sum' do
-      stats.sum.to_json
+      TickStats::stats.sum.to_json
     end
 
     get '/info' do
