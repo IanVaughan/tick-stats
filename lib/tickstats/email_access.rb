@@ -7,7 +7,8 @@ module TickStats
       @logger = logger
       @logger.debug "EmailAccess::initialize->config:#{config.inspect}" if @logger
       @config = config
-      @config[:pass] = ENV['TICK_PASS']
+      @config[:pass] = ENV['TICK_PASS'] || nil
+      raise "No ENV 'TICK_PASS' set." if @config[:pass].nil?
     end
 
     def fetch
