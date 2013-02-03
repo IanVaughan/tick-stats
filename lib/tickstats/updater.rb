@@ -9,12 +9,10 @@ module TickStats
       @logger = logger
       config = YAML.load(File.read(config_file))
       @email_access = TickStats::EmailAccess.new(config, @logger)
-
-      update # every day
     end
 
     def update
-      @logger.debug "Stats::load->update"
+      @logger.debug "Updater::update" if @logger
       data = @email_access.fetch
 
       result = {}
