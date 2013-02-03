@@ -2,10 +2,10 @@ require './lib/tick_stats'
 
 logger = Logger.new(STDOUT)
 
-24_HOURS = 60 * 60 * 24
+TIME_24_HOURS = 60 * 60 * 24
 
 updater = TickStats::Updater.new(logger)
 while true
-  updater.test
-  sleep 24_HOURS
+  updater.update
+  sleep TIME_24_HOURS
 end
