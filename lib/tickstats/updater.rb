@@ -5,10 +5,9 @@ require './lib/tickstats/email_parser'
 module TickStats
   class Updater
 
-    def initialize logger = nil, config_file = 'config/gmail.yml'
+    def initialize logger = nil
       @logger = logger
-      config = YAML.load(File.read(config_file))
-      @email_access = TickStats::EmailAccess.new(config, @logger)
+      @email_access = TickStats::EmailAccess.new(@logger)
     end
 
     def update

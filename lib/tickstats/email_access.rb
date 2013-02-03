@@ -3,11 +3,12 @@ require 'gmail'
 module TickStats
   class EmailAccess
 
-    def initialize config, logger = nil
+    def initialize logger = nil
       @logger = logger
-      @logger.debug "EmailAccess::initialize->config:#{config.inspect}" if @logger
-      @config = config
+      @config = {}
+      @config[:user] = ENV['TICK_USER'] || nil
       @config[:pass] = ENV['TICK_PASS'] || nil
+      @config[:label] = ENV['TICK_LABEL'] || nil
       raise "No ENV 'TICK_PASS' set." if @config[:pass].nil?
     end
 
