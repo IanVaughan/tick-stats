@@ -3,6 +3,7 @@ source :rubygems
 gem 'rake'
 gem 'sinatra'
 gem 'gmail'
+gem 'thin'
 
 group :test do
   gem 'rspec'
