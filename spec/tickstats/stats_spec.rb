@@ -10,28 +10,24 @@ module TickStats
       }
     end
 
-    before do
-      @stats = Stats.new
-      @stats.stub(:data).and_return(data)
+    let(:stats) { Stats.new }
+    before { stats.stub(:data).and_return(data) }
+
+    it "returns all the current data" do
+      stats.totals.should == data
     end
 
-    it "should return all the current data" do
-      @stats.totals.should == data
-    end
-
-    it "should get the sum all names and hours" do
-      @stats.sum.should == {'First Person' => 14.0, 'Second Person' => 12.0}
+    it "gets the sum all names and hours" do
+      stats.sum.should == {'First Person' => 14.0, 'Second Person' => 12.0}
     end
 
     it "returns daily totals" do
-      @stats.daily.should == {DateTime.new(2012, 8, 8) => 13.8,
-                              DateTime.new(2012, 8, 9) => 12.2}
+      stats.daily.should == { DateTime.new(2012, 8, 8) => 13.8,
+                               DateTime.new(2012, 8, 9) => 12.2 }
     end
 
-    # it "should load a saved file of data" do
-    #   data.to_json
-    #   @stats.load
-    # end
+    it "returns weekly totals" do
+    end
 
   end
 end
