@@ -1,4 +1,4 @@
-Tick Filled In Stats
+Filled-In Tick Stats
 ====================
 
 API to get stats about tick entries filled out.
@@ -28,3 +28,11 @@ Set env
 Run
 
     rackup
+
+
+
+heroku config:set TICK_USER="ivaughan@globalpersonals.co.uk"
+heroku config:set TICK_PASS="password"
+heroku config:set TICK_LABEL="TickSpot"
+
+
