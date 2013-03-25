@@ -19,9 +19,10 @@ module TickStats
         result.merge! EmailParser.parse(e)
       end
 
-      File.open(RESULTS_FILE, 'w') do |file|
-        file.puts result.to_yaml
-      end
+      #DB
+      # File.open(RESULTS_FILE, 'w') do |file|
+        # file.puts result.to_yaml
+      # end
     end
 
   end
