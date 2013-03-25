@@ -11,7 +11,6 @@ module TickStats
     end
 
     def update
-      @logger.debug "Updater::update" if @logger
       data = @email_access.fetch
 
       result = {}

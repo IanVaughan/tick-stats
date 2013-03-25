@@ -3,7 +3,6 @@ module TickStats
 
     class << self
       def parse text
-        return '' unless text
         date = parse_date(find_date(text[:subject]))
         names = {}
         text[:body].each_line do |line|
