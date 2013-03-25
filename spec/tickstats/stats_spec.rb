@@ -10,24 +10,14 @@ module TickStats
       }
     end
 
-    let(:stats) { Stats.new }
+    subject(:stats) { Stats.new }
     before { stats.stub(:data).and_return(data) }
 
-    it "returns all the current data" do
-      stats.totals.should == data
-    end
+    its(:totals) { should == data }
+    its(:sum) { should == {'First Person' => 14.0, 'Second Person' => 12.0} }
+    its(:daily) { should == { DateTime.new(2012, 8, 8) => 13.8,
+                              DateTime.new(2012, 8, 9) => 12.2 } }
 
-    it "gets the sum all names and hours" do
-      stats.sum.should == {'First Person' => 14.0, 'Second Person' => 12.0}
-    end
-
-    it "returns daily totals" do
-      stats.daily.should == { DateTime.new(2012, 8, 8) => 13.8,
-                               DateTime.new(2012, 8, 9) => 12.2 }
-    end
-
-    it "returns weekly totals" do
-    end
-
+    # its(:weekly) { should == DateTime.new(2012, 8, 9) => 13.8 }
   end
 end
