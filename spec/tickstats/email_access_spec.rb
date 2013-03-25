@@ -4,7 +4,6 @@ require './lib/tickstats/email_access'
 module TickStats
   describe EmailAccess do
 
-    let(:config) { YAML.load( File.read('config/gmail.yml') ) }
     let(:email) { EmailAccess.new config }
 
     it "should get emails" do
