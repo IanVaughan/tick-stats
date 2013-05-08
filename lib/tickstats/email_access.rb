@@ -4,11 +4,12 @@ module TickStats
   class EmailAccess
 
     def initialize logger = nil
-      @logger = logger
+      @logger = logger(STDOUT)
       @config = {}
       @config[:user] = ENV['TICK_USER'] || nil
       @config[:pass] = ENV['TICK_PASS'] || nil
       @config[:label] = ENV['TICK_LABEL'] || nil
+      # %w{:user :pass :label}.each
       raise "No ENV 'TICK_PASS' set." if @config[:pass].nil?
     end
 

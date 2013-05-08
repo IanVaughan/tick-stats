@@ -6,7 +6,7 @@ module TickStats
   class Updater
 
     def initialize logger = nil
-      @logger = logger
+      @logger = logger(STDOUT)
       @email_access = TickStats::EmailAccess.new(@logger)
     end
 

@@ -4,7 +4,7 @@ module TickStats
     HOURS = 7.5
 
     def initialize logger = nil
-      @logger = logger
+      @logger = logger(STDOUT)
     end
 
     def totals

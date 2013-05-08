@@ -1,6 +1,15 @@
+#!/usr/bin/env ruby
+#require File.dirname(__FILE__) + '/../config/boot'
+#require 'commands/server'
+
+#require 'commands/server'
+
+# run TickStats::Server
+# $:.unshift File.join(File.expand_path(File.dirname(__FILE__)), 'config')
+
 require './lib/tick_stats'
 
-logger = Logger.new(STDOUT)
+logger = Logger.new(STDOUT) #{}"./log/updater.log")
 
 TIME_24_HOURS = 60 * 60 * 24
 
