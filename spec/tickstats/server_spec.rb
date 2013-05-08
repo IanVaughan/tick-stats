@@ -4,7 +4,6 @@ module TickStats
   describe Server do
 
     it "should load" do
-      pending "fuck the server, fix everything else first"
       get '/test'
 
       last_response.should be_ok
