@@ -9,10 +9,6 @@ module TickStats
   RESULTS_FILE = 'totals.yml'
   class << self
 
-    # configure :development do
-    #   $logger = Logger.new(STDOUT) # move
-    # end
-
     def stats
       @stats ||= Stats.new(logger)
     end
