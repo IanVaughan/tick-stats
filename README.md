@@ -13,26 +13,24 @@ API
 
 Returns : JSON hash of names, hours
 
-	{Ian Vaughan: 10}
+    {Ian Vaughan: 10}
 
 
-
-Setup
+## Setup
 
     bundle install
 
-Set env
+### Set env
 
     export TICK_PASS="password"
 
-Run
+### Run
 
     rackup
 
 
+### Heroku setup
 
-heroku config:set TICK_USER="ivaughan@globalpersonals.co.uk"
-heroku config:set TICK_PASS="password"
-heroku config:set TICK_LABEL="TickSpot"
-
-
+    heroku config:set TICK_USER="user@email.com
+    heroku config:set TICK_PASS="password"
+    heroku config:set TICK_LABEL="TickSpot"
