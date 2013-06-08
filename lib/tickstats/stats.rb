@@ -32,12 +32,5 @@ module TickStats
       end
       sums
     end
-
-    private
-
-    def data
-      @data ||= YAML.load(File.open(TickStats::RESULTS_FILE)) if File.exists?(TickStats::RESULTS_FILE)
-      @data ||= {}
-    end
   end
 end

@@ -18,8 +18,10 @@ module TickStats
         result.merge! EmailParser.parse(e)
       end
 
-      File.open(RESULTS_FILE, 'w') do |file|
-        file.puts result.to_yaml
+      results.each do |date, data|
+        data.each do |name, hours|
+          Stat.new(:date => date, :person => name, :hours => hours)
+        end
       end
     end
 

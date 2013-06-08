@@ -21,10 +21,12 @@ module TickStats
         DateTime.parse(date)
       end
 
+      # {"First Person" => 1}
       def extract_name_hour line
         return {} if line == ''
         split = line.split(':')
-        { split.first.lstrip => split.last.lstrip.to_f }
+        # { split.first.lstrip => split.last.lstrip.to_f }
+        {:name => split.first.lstrip, :hours => split.last.lstrip.to_f}
       end
     end
 

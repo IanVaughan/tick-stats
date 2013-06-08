@@ -21,16 +21,21 @@ module TickStats
 
       it "finds the persons name and whole number into a hash" do
         text = "  First Person: 1"
-        EmailParser.extract_name_hour(text).should == {"First Person" => 1}
+        EmailParser.extract_name_hour(text).should == {nake: "First Person", hours: 1}
       end
 
       it "finds the persons name and floating point number into a hash" do
         text = "  First Person: 1.2"
-        EmailParser.extract_name_hour(text).should == {"First Person" => 1.2}
+        EmailParser.extract_name_hour(text).should == {name: "First Person", hours: 1.2}
       end
 
       it "parses emails and extract names and hours into a hash" do
-        EmailParser.parse(email).should == {DateTime.new(2012, 8, 7) => {'First Person' => 0, 'Second Person' => 1.2}}
+        EmailParser.parse(email).should == {
+          date: DateTime.new(2012, 8, 7) => [
+            {name: 'First Person', hours: 0},
+            {name: 'Second Person', name: 1.2}
+            ]
+          }
       end
     end
 

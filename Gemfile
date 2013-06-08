@@ -5,6 +5,11 @@ gem 'sinatra'
 gem 'gmail'
 gem 'thin'
 
+gem 'pg'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'shotgun'
+
 group :test do
   gem 'rspec'
   gem 'webrat'
